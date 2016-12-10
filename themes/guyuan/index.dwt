@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js,index.js'}
+</head>
+<body class="index_page">
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<div class="block clearfix">
+<!-- #BeginLibraryItem "/library/index_ad.lbi" --><!-- #EndLibraryItem -->
+<!--<div class="AreaL">-->
+<!--&lt;!&ndash; TemplateBeginEditable name="左边区域" &ndash;&gt;-->
+<!--&lt;!&ndash; #BeginLibraryItem "/library/new_articles.lbi" &ndash;&gt;-->
+
+    <!--<div id="mallNews" class="box_1" style="height:334px;">-->
+        <!--<h3 style="height:45px; background:#f1f1f1;"><span style="line-height:45px; font-size:14px; font-family:'宋体'; color:#666;">新闻快讯</span></h3>-->
+        <!--<div class="NewsList tc  " style="border-top:none">-->
+            <!--<ul>-->
+                <!--&lt;!&ndash;{foreach from=$new_articles item=article name=goods}&ndash;&gt;-->
+                <!--&lt;!&ndash;{if $smarty.foreach.goods.iteration < 10}&ndash;&gt;-->
+                <!--<li><a href="{$article.url}" title="{$article.title|escape:html}">{$article.short_title|truncate:20:"...":true}</a></li>-->
+                <!--&lt;!&ndash; {/if} &ndash;&gt;-->
+                <!--&lt;!&ndash;{/foreach}&ndash;&gt;-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+ <!--&lt;!&ndash; #EndLibraryItem &ndash;&gt;-->
+<!--&lt;!&ndash; TemplateEndEditable &ndash;&gt;-->
+
+    <!--&lt;!&ndash;AD end&ndash;&gt;-->
+<!--</div>-->
+
+<div style="float:right; width:976px;"> 
+
+<!-- TemplateBeginEditable name="促销商品区域" -->
+<!-- #BeginLibraryItem "/library/recommend_promotion.lbi" -->
+
+<!-- {if $promotion_goods} -->
+<div class="sale_box clearfix">
+	<div class="tit"><span>特价商品</span></div>
+	<div class="clearfix">
+         <!--{foreach from=$promotion_goods item=goods name="promotion_foreach"}-->
+        
+           <ul class="clearfix">
+           <li class="goodsimg"><a href="{$goods.url}"><img src="{$goods.thumb}" border="0" alt="{$goods.name|escape:html}"/></a></li>
+			<li><p style="height:22px; overflow:hidden;"><a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_name|escape:html}</a></p>{$lang.promote_price}：<font class="f1">{$goods.promote_price}</font></li>
+           </ul>
+
+         <!--{/foreach}-->
+       </div>
+</div>
+<!-- {/if} -->
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable -->
+ 
+</div>
+ 
+  
+    <div class="blank"></div> 
+ 
+  
+  <div class="goodsBox_1">
+  <!-- TemplateBeginEditable name="首页右侧区域" -->
+<!-- TemplateEndEditable -->
+  
+  <!-- TemplateBeginEditable name="全宽行" -->
+<!-- #BeginLibraryItem "/library/recommend_new.lbi" -->
+
+<!-- {if $new_goods} -->
+<!-- {if $cat_rec_sign neq 1} -->
+<div class="xm-box">
+<h4 class="title"><span>新品上架</span> <a class="more" href="../search.php?intro=new">更多</a></h4>
+<div class="blank"></div>
+<div id="show_new_area" class="clearfix">
+  <!-- {/if} -->
+  <!--{foreach from=$new_goods item=goods}-->
+  <div class="goodsItem">
+       
+           <a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" class="goodsimg" /></a><br />
+           <p class="f1"><a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>市场价：<font class="market">{$goods.market_price}</font><br/>
+           本店价：<font class="f1"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></font>      
+		    
+        </div>
+  <!--{/foreach}-->
+ 
+  <!-- {if $cat_rec_sign neq 1} -->
+  </div>
+
+</div>
+<div class="blank"></div>
+  <!-- {/if} -->
+<!-- {/if} -->
+
+ <!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/recommend_hot.lbi" -->
+
+<!-- {if $hot_goods} -->
+<!-- {if $cat_rec_sign neq 1} -->
+<div class="xm-box">
+<h4 class="title"><span>热卖商品</span> <a class="more" href="../search.php?intro=hot">更多</a></h4>
+<div class="blank"></div>
+<div id="show_hot_area" class="clearfix">
+  <!-- {/if} -->
+  <!--{foreach from=$hot_goods item=goods}-->
+  <div class="goodsItem">
+       
+           <a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" class="goodsimg" /></a><br />
+           <p class="f1"><a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>市场价：<font class="market">{$goods.market_price}</font><br/>
+      
+           本店价：<font class="f1"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></font>      
+		    
+        </div>
+  <!--{/foreach}-->
+ 
+  <!-- {if $cat_rec_sign neq 1} -->
+  </div>
+
+</div>
+<div class="blank"></div>
+  <!-- {/if} -->
+<!-- {/if} -->
+
+ <!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/recommend_best.lbi" -->
+
+<!-- {if $best_goods} -->
+<!-- {if $cat_rec_sign neq 1} -->
+<div class="xm-box">
+<h4 class="title"><span>精品推荐</span> <a class="more" href="../search.php?intro=best">更多</a></h4>
+<div class="blank"></div>
+<div id="show_best_area" class="clearfix">
+  <!-- {/if} -->
+  <!--{foreach from=$best_goods item=goods}-->
+  <div class="goodsItem">
+       
+           <a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" class="goodsimg" /></a><br />
+           <p class="f1"><a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a></p>
+           
+           
+ 市场价：<font class="market">{$goods.market_price}</font> <br/>
+      
+           本店价：<font class="f1"><!-- {if $goods.promote_price neq ""} -->{$goods.promote_price}<!-- {else}-->{$goods.shop_price}<!--{/if}--></font>      
+		    
+        </div>
+  <!--{/foreach}-->
+ 
+  <!-- {if $cat_rec_sign neq 1} -->
+  </div>
+
+</div>
+<div class="blank"></div>
+  <!-- {/if} -->
+<!-- {/if} -->
+
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable -->
+  </div> 
+  <!--right end-->
+    </div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>
